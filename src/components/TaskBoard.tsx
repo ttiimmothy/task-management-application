@@ -1,33 +1,58 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Column } from "./Column";
-import { CardInfo } from "./Card";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTask, updateTaskColumn } from "../redux/tasks/reducer";
+import { IRootState } from "../store";
 
-type TaskBoardProps = {
-  cards: CardInfo[];
-  setTasks: React.Dispatch<React.SetStateAction<CardInfo[]>>;
-};
+export function TaskBoard(): JSX.Element {
+  const dispatch = useDispatch();
+  const cards = useSelector((state: IRootState) => state.task.task);
+  const columns = useSelector((state: IRootState) => state.column.column);
 
-export function TaskBoard({ cards, setTasks }: TaskBoardProps): JSX.Element {
   const moveCard = (id: number, column: string) => {
-    const updatedCards = cards.map((card) =>
-      card.id === id ? { ...card, column } : card
+    const newTasks = cards.map((task) =>
+      task.id === id ? { ...task, column } : task
     );
-    localStorage.setItem("tasks", JSON.stringify(updatedCards));
-    setTasks(updatedCards);
+    dispatch(updateTaskColumn({ id, column }));
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   };
 
   const removeCard = (id: number) => {
-    const updatedCards = cards.filter((card) => card.id !== id);
-    localStorage.setItem("tasks", JSON.stringify(updatedCards));
-    setTasks(updatedCards);
+    const newTasks = cards.filter((task) => task.id !== id);
+    dispatch(deleteTask(id));
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   };
 
-  const columns = ["To-Do", "In Progress", "Done"];
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.scrollBy({
+        left: -500, // Adjust the scroll amount as needed
+        behavior: "smooth", // Add smooth scrolling
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.scrollBy({
+        left: 500, // Adjust the scroll amount as needed
+        behavior: "smooth", // Add smooth scrolling
+      });
+    }
+  };
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="task-board">
+      <div className="task-board" ref={scrollContainerRef}>
+        <button className="left-button" onClick={scrollLeft}>
+          <i className="gg-arrow-left"></i>
+        </button>
         {columns.map((col) => (
           <Column
             key={col}
@@ -37,6 +62,9 @@ export function TaskBoard({ cards, setTasks }: TaskBoardProps): JSX.Element {
             removeCard={removeCard}
           />
         ))}
+        <button className="right-button" onClick={scrollRight}>
+          <i className="gg-arrow-right"></i>
+        </button>
       </div>
     </DndProvider>
   );
