@@ -15,7 +15,7 @@ function App() {
   const tasks = useSelector((state: IRootState) => state.task.task);
   const column = useSelector((state: IRootState) => state.column.column);
 
-  // below part is the example code beforehand without react-redux
+  // below part is the example code beforehand without react-redux but only useState
 
   // const [tasks, setTasks] = useState<CardInfo[]>(
   //   JSON.parse(localStorage.getItem("tasks") || "[]")
@@ -62,8 +62,16 @@ function App() {
   };
 
   const onColumnFormSubmit = (values: { name: string }) => {
-    dispatch(addColumn(values.name));
-    localStorage.setItem("columns", JSON.stringify([...column, values.name]));
+    dispatch(
+      addColumn({ ...values, id: column.length, columnOrder: column.length })
+    );
+    localStorage.setItem(
+      "columns",
+      JSON.stringify([
+        ...column,
+        { ...values, id: column.length, columnOrder: column.length },
+      ])
+    );
   };
 
   return (
@@ -84,7 +92,7 @@ function App() {
           onColumnFormSubmit={onColumnFormSubmit}
           show={showCreateTaskModal}
           handleClose={() => setShowCreateTaskModal(false)}
-          columns={column}
+          columns={column.map((col) => col.name)}
         />
       )}
       <TaskBoard />

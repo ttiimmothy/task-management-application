@@ -1,32 +1,13 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Column } from "./Column";
 import { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteTask, updateTaskColumn } from "../redux/tasks/reducer";
+import { useSelector } from "react-redux";
 import { IRootState } from "../store";
+import { ColumnPlaceholder } from "./ColumnPlaceholder";
 
 export function TaskBoard(): JSX.Element {
-  const dispatch = useDispatch();
-
-  const cards = useSelector((state: IRootState) => state.task.task);
-  const columns = useSelector((state: IRootState) => state.column.column);
-
-  const moveCard = (id: number, column: string) => {
-    const newTasks = cards.map((task) =>
-      task.id === id ? { ...task, column } : task
-    );
-    dispatch(updateTaskColumn({ id, column }));
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
-  };
-
-  const removeCard = (id: number) => {
-    const newTasks = cards.filter((task) => task.id !== id);
-    dispatch(deleteTask(id));
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
-  };
-
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const columns = useSelector((state: IRootState) => state.column.column);
 
   const scrollLeft = () => {
     const container = scrollContainerRef.current;
@@ -51,29 +32,27 @@ export function TaskBoard(): JSX.Element {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="task-board" ref={scrollContainerRef}>
-        <button
-          className="left-button"
-          onClick={scrollLeft}
-          aria-label="Left button"
-        >
-          <i className="gg-arrow-left" />
-        </button>
-        {columns.map((col) => (
-          <Column
-            key={col}
-            title={col}
-            cards={cards.filter((card) => card.column === col)}
-            onDropCard={moveCard}
-            removeCard={removeCard}
-          />
-        ))}
-        <button
-          className="right-button"
-          onClick={scrollRight}
-          aria-label="Right button"
-        >
-          <i className="gg-arrow-right" />
-        </button>
+        <div className="drop-board">
+          <button
+            className="left-button"
+            onClick={scrollLeft}
+            aria-label="Left button"
+          >
+            <i className="gg-arrow-left" />
+          </button>
+          {[...columns]
+            .sort((a, b) => a.columnOrder - b.columnOrder)
+            .map((col) => {
+              return <ColumnPlaceholder key={col.id} order={col.id} />;
+            })}
+          <button
+            className="right-button"
+            onClick={scrollRight}
+            aria-label="Right button"
+          >
+            <i className="gg-arrow-right" />
+          </button>
+        </div>
       </div>
     </DndProvider>
   );

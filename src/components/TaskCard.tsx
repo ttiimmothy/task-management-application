@@ -1,6 +1,6 @@
 import { useDrag } from "react-dnd";
 
-type CardProps = {
+type TaskCardProps = {
   id: number;
   text: string;
   category: string;
@@ -8,15 +8,15 @@ type CardProps = {
   removeCard: (id: number) => void;
 };
 
-export function Card({
+export function TaskCard({
   id,
   text,
   category,
   dueDate,
   removeCard,
-}: CardProps): JSX.Element {
+}: TaskCardProps): JSX.Element {
   const [{ isDragging }, drag] = useDrag({
-    type: "CARD",
+    type: "Card",
     item: { id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),

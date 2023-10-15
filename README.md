@@ -7,10 +7,11 @@ A task manager using `Typescript`, `React` amd `Vite`. It uses `React Bootstrap`
 
 ## 🎯 Features
 
-- add Task with due date, category and task title
-- remove Task
-- display Tasks in a ***Kanban*** board
-- switch Task status using ***drag and drop*** function
+- add task with due date, category and task title
+- remove task
+- display tasks in a ***Kanban*** board
+- switch task status using ***drag and drop*** function
+- switch status column using ***drag and drop*** function
 
 ## 🖥 Prerequisites
 
