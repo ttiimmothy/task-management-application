@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { CardInfo } from "../../types/CardInfo";
+import { TaskCardInfo } from "../../types/TaskCardInfo";
 
 export interface ITaskState {
-  task: CardInfo[];
+  task: TaskCardInfo[];
 }
 
 const initialState: ITaskState = {
@@ -13,11 +13,11 @@ const taskReducer = createSlice({
   name: "Task",
   initialState,
   reducers: {
-    getAllTasks: (state: ITaskState, action: PayloadAction<CardInfo[]>) => {
+    getAllTasks: (state: ITaskState, action: PayloadAction<TaskCardInfo[]>) => {
       state.task = action.payload;
     },
 
-    addTask: (state: ITaskState, action: PayloadAction<CardInfo>) => {
+    addTask: (state: ITaskState, action: PayloadAction<TaskCardInfo>) => {
       state.task.push(action.payload);
     },
 

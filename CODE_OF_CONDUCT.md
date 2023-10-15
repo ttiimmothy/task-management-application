@@ -1,11 +1,11 @@
 <!--
-Copyright (c) Recommenders contributors.
+Copyright (c) Task Manager contributors.
 Licensed under the MIT License.
 -->
 
-# Recommenders Code of Conduct
+# Task Manager Code of Conduct
 
-This code of conduct outlines expectations for participation in the Recommenders open source community, as well as steps for reporting unacceptable behavior. We are committed to providing a welcoming and inspiring community for all. People violating this code of conduct may be banned from the community. Our open source community strives to:
+This code of conduct outlines expectations for participation in the Task Manager open source community, as well as steps for reporting unacceptable behavior. We are committed to providing a welcoming and inspiring community for all. People violating this code of conduct may be banned from the community. Our open source community strives to:
 
 * **Be friendly and patient**: Remember you might not be communicating in someone else's primary spoken or programming language, and others may not have your level of understanding.
 

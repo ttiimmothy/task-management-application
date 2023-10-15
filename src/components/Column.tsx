@@ -1,5 +1,5 @@
-import { useDrop } from "react-dnd";
-import { Card } from "./Card";
+import { useDrag, useDrop } from "react-dnd";
+import { TaskCard } from "./TaskCard";
 
 type ColumnProps = {
   title: string;
@@ -21,19 +21,34 @@ export function Column({
   removeCard,
 }: ColumnProps): JSX.Element {
   const [, drop] = useDrop({
-    accept: "CARD",
+    accept: "Card",
     drop: (item: { id: number }) => onDropCard(item.id, title),
   });
 
+  const [{ isDragging }, drag] = useDrag({
+    type: "Status",
+    item: { name: title },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
+
   return (
-    <div ref={drop} className="column">
+    <div
+      ref={(ele) => {
+        drop(ele);
+        drag(ele);
+      }}
+      className={`column ${isDragging ? "opacity-50" : "opacity-100"}`}
+      // className="column"
+    >
       <h2>{title}</h2>
       {cards.length === 0 && (
         <p className="no-cards">No tasks in this category</p>
       )}
       {cards.length > 0 &&
         cards.map((card) => (
-          <Card key={card.id} {...card} removeCard={removeCard} />
+          <TaskCard key={card.id} {...card} removeCard={removeCard} />
         ))}
     </div>
   );
