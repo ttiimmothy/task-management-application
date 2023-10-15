@@ -1,7 +1,7 @@
 # Task Manager
 [![CI](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yaml/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yaml)
 
-A task manager using `Typescript`, `React.js` amd `Vite`. It uses `React bootstrap` for simplifying CSS usage. It uses `Formik` and `Yup` to make the create task form and uses `react-dnd` so the tasks can be dragged and dropped to different **status**. The manager uses `@redux/toolkit` for state management.
+A task manager using `Typescript`, `React` amd `Vite`. It uses `React Bootstrap` and `Tailwind CSS` for simplifying CSS usage. It uses `Formik` and `Yup` to make the create task form and uses `react-dnd` so the tasks can be dragged and dropped to different **status**. The manager uses `react-redux` and `@redux/toolkit` for state management.
 
 ## 🎯 Features
 
@@ -19,9 +19,17 @@ A task manager using `Typescript`, `React.js` amd `Vite`. It uses `React bootstr
 ### Build and Run
 
 ```TypeScript
-npm i
+npm install
 npm run dev
 ```
 
 ## 🖼 Preview
 ![preview1](/public/preview1.png)
+
+## :scroll: Icon Library
+
+- from **<https://css.gg/>**
+
+```HTML
+https://css.gg/css
+```

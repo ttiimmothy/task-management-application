@@ -50,8 +50,12 @@ export function TaskBoard(): JSX.Element {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="task-board" ref={scrollContainerRef}>
-        <button className="left-button" onClick={scrollLeft}>
-          <i className="gg-arrow-left"></i>
+        <button
+          className="left-button"
+          onClick={scrollLeft}
+          aria-label="Left button"
+        >
+          <i className="gg-arrow-left" />
         </button>
         {columns.map((col) => (
           <Column
@@ -62,8 +66,12 @@ export function TaskBoard(): JSX.Element {
             removeCard={removeCard}
           />
         ))}
-        <button className="right-button" onClick={scrollRight}>
-          <i className="gg-arrow-right"></i>
+        <button
+          className="right-button"
+          onClick={scrollRight}
+          aria-label="Right button"
+        >
+          <i className="gg-arrow-right" />
         </button>
       </div>
     </DndProvider>

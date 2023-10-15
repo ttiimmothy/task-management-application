@@ -1,0 +1,16 @@
+{
+  "cSpell.words": [
+    "compat",
+    "Cpath",
+    "Csvg",
+    "formik",
+    "Kanban",
+    "njsproj",
+    "ntvs",
+    "reduxjs",
+    "tailwindcss"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}
