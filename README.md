@@ -1,5 +1,5 @@
 # Task Manager
-[![CI](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yaml/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yaml)
+[![ci](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yml)
 
 A task manager using `Typescript`, `React` amd `Vite`. It uses `React Bootstrap` and `Tailwind CSS` for simplifying CSS usage. It uses `Formik` and `Yup` to make the create task form and uses `react-dnd` so the tasks can be dragged and dropped to different **status**. The manager uses `react-redux` and `@redux/toolkit` for state management.
 
