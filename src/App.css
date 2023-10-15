@@ -9,9 +9,10 @@
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
   border-radius: .375rem;
-  overflow: auto;
-  width: 400px;
+  overflow-y: auto;
+  width: calc((60rem - 22px * 2) / 3);
   height: 600px;
+  flex-shrink: 0;
 }
 
 .column h2 {
@@ -58,6 +59,10 @@
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  overflow-x: auto;
+  position: relative;
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .task-card {
@@ -81,9 +86,9 @@
   line-height: 1rem;
 }
 
-.close-button {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
+.close-button,
+.left-button,
+.right-button {
   font-weight: 600;
   font-size: .75rem;
   line-height: 1rem;
@@ -91,38 +96,29 @@
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   top: calc(50% - .5rem);
-  right: 1rem;
-  position: absolute;
+
+
   border: 0;
   background-color: transparent;
 }
 
-.gg-close {
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  transform: scale(var(--ggs, 1));
-  width: 22px;
-  height: 22px;
-  border: 2px solid transparent;
-  border-radius: 40px
-}
-
-.gg-close::after,
-.gg-close::before {
-  content: "";
-  display: block;
-  box-sizing: border-box;
+.close-button {
   position: absolute;
-  width: 16px;
-  height: 2px;
-  background: currentColor;
-  transform: rotate(45deg);
-  border-radius: 5px;
-  top: 8px;
-  left: 1px
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+  right: 1rem;
 }
 
-.gg-close::after {
-  transform: rotate(-45deg)
+.left-button {
+  position: sticky;
+  left: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(68, 239, 176 / var(--tw-text-opacity));
+}
+
+.right-button {
+  position: sticky;
+  right: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(68, 239, 176 / var(--tw-text-opacity));
 }

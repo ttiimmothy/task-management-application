@@ -1,13 +1,5 @@
 import { useDrag } from "react-dnd";
 
-export type CardInfo = {
-  id: number;
-  text: string;
-  column: string;
-  category: string;
-  dueDate: string;
-};
-
 type CardProps = {
   id: number;
   text: string;
