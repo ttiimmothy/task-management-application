@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.hintrc
+.nokeyll
 
 # Editor directories and files
 .idea
