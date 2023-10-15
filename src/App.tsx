@@ -3,16 +3,13 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { TaskForm } from "./components/TaskForm";
 import { TaskBoard } from "./components/TaskBoard";
-import { Task } from "./interfaces/Task";
+import { CardInfo } from "./components/Card";
 
 function App() {
   const [showCreateTaskModal, setShowCreateTaskModal] = useState(false);
-  const [tasks, setTasks] = useState<Task[]>(() => {
-    const items = localStorage.getItem("tasks");
-    if (items) {
-      return JSON.parse(items);
-    }
-  });
+  const [tasks, setTasks] = useState<CardInfo[]>(
+    JSON.parse(localStorage.getItem("tasks") || "[]")
+  );
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -28,6 +25,7 @@ function App() {
       ...prev,
       {
         id: Date.now(),
+        text: values.title,
         ...values,
       },
     ]);
