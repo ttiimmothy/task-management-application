@@ -28,6 +28,8 @@ export function TaskForm({
   handleClose,
   columns,
 }: TaskFormProps): JSX.Element {
+  const [activePage, setActivePage] = useState("task");
+
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -48,8 +50,6 @@ export function TaskForm({
     }),
     onSubmit: (values) => onSubmit(values),
   });
-
-  const [activePage, setActivePage] = useState("task");
 
   return (
     <Modal className="input-form" show={show} onHide={handleClose} centered>

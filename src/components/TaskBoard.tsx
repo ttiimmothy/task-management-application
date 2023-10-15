@@ -8,6 +8,7 @@ import { IRootState } from "../store";
 
 export function TaskBoard(): JSX.Element {
   const dispatch = useDispatch();
+
   const cards = useSelector((state: IRootState) => state.task.task);
   const columns = useSelector((state: IRootState) => state.column.column);
 
@@ -31,7 +32,7 @@ export function TaskBoard(): JSX.Element {
     const container = scrollContainerRef.current;
     if (container) {
       container.scrollBy({
-        left: -500, // Adjust the scroll amount as needed
+        left: -500,
         behavior: "smooth", // Add smooth scrolling
       });
     }
@@ -41,8 +42,8 @@ export function TaskBoard(): JSX.Element {
     const container = scrollContainerRef.current;
     if (container) {
       container.scrollBy({
-        left: 500, // Adjust the scroll amount as needed
-        behavior: "smooth", // Add smooth scrolling
+        left: 500,
+        behavior: "smooth",
       });
     }
   };
