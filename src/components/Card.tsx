@@ -31,8 +31,12 @@ export function Card({
       {text}
       <div className="category">{category}</div>
       <div className="due-date">Due Date: {dueDate}</div>
-      <button className="close-button" onClick={() => removeCard(id)}>
-        <i className="gg-close"></i>
+      <button
+        className="close-button"
+        onClick={() => removeCard(id)}
+        aria-label="Close button"
+      >
+        <i className="gg-close" />
       </button>
     </div>
   );
