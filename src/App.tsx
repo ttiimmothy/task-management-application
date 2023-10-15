@@ -3,7 +3,6 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { TaskForm } from "./components/TaskForm";
 import { TaskBoard } from "./components/TaskBoard";
-import { CardInfo } from "./types/CardInfo";
 import { columns } from "./constants/columns";
 import { IRootState } from "./store";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +10,17 @@ import { addColumn, getAllColumns } from "./redux/columns/reducer";
 import { addTask, getAllTasks } from "./redux/tasks/reducer";
 
 function App() {
-  const [showCreateTaskModal, setShowCreateTaskModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const tasks = useSelector((state: IRootState) => state.task.task);
+  const column = useSelector((state: IRootState) => state.column.column);
+
+  // below part is the example code beforehand without react-redux
+
   // const [tasks, setTasks] = useState<CardInfo[]>(
   //   JSON.parse(localStorage.getItem("tasks") || "[]")
   // );
-  const tasks: CardInfo[] = useSelector((state: IRootState) => state.task.task);
-  const column = useSelector((state: IRootState) => state.column.column);
+
   // const [column, setColumn] = useState<string[]>(() => {
   //   const saved = localStorage.getItem("columns");
   //   if (!saved) {
@@ -26,13 +30,13 @@ function App() {
   //   }
   // });
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     const saved = localStorage.getItem("columns");
     dispatch(getAllColumns(saved ? JSON.parse(saved) : columns));
     dispatch(getAllTasks(JSON.parse(localStorage.getItem("tasks") || "[]")));
   }, [dispatch]);
+
+  const [showCreateTaskModal, setShowCreateTaskModal] = useState(false);
 
   const onSubmit = (values: {
     title: string;

@@ -23,6 +23,7 @@ export function ColumnForm({
         .min(2, "Must be 2 characters or more")
         .max(30, "Must be 30 characters or less")
         .required("Column name is required")
+
         // .notOneOf(columns, "This column already exists"), # case-sensitive
 
         // case-insensitive checking
