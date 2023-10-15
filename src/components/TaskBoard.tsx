@@ -2,11 +2,10 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Column } from "./Column";
 import { CardInfo } from "./Card";
-import { Task } from "../interfaces/Task";
 
 type TaskBoardProps = {
-  cards: Task[];
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  cards: CardInfo[];
+  setTasks: React.Dispatch<React.SetStateAction<CardInfo[]>>;
 };
 
 export function TaskBoard({ cards, setTasks }: TaskBoardProps): JSX.Element {
@@ -25,10 +24,6 @@ export function TaskBoard({ cards, setTasks }: TaskBoardProps): JSX.Element {
   };
 
   const columns = ["To-Do", "In Progress", "Done"];
-  const cardInfo: CardInfo[] = cards.map((card) => ({
-    text: card.title,
-    ...card,
-  }));
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -37,7 +32,7 @@ export function TaskBoard({ cards, setTasks }: TaskBoardProps): JSX.Element {
           <Column
             key={col}
             title={col}
-            cards={cardInfo.filter((card) => card.column === col)}
+            cards={cards.filter((card) => card.column === col)}
             onDropCard={moveCard}
             removeCard={removeCard}
           />
