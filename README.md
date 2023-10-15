@@ -11,7 +11,7 @@ A task manager using `Typescript`, `React` amd `Vite`. It uses `React Bootstrap`
 - remove task
 - display tasks in a ***Kanban*** board
 - switch task status using ***drag and drop*** function
-- switch status column using ***drag and drop*** function
+- move status column order using ***drag and drop*** function
 
 ## 🖥 Prerequisites
 
