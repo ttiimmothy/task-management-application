@@ -42,8 +42,14 @@ export function TaskBoard(): JSX.Element {
           </button>
           {[...columns]
             .sort((a, b) => a.columnOrder - b.columnOrder)
-            .map((col) => {
-              return <ColumnPlaceholder key={col.id} order={col.id} />;
+            .map((col, index) => {
+              return (
+                <ColumnPlaceholder
+                  columnOrder={col.columnOrder}
+                  key={index}
+                  order={col.id}
+                />
+              );
             })}
           <button
             className="right-button"

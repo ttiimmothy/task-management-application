@@ -23,15 +23,9 @@ const columnReducer = createSlice({
 
     updateColumnOrder: (
       state: IColumnState,
-      action: PayloadAction<{ name: string; order: number }>
+      action: PayloadAction<Column[]>
     ) => {
-      const { name, order } = action.payload;
-      const stored = state.column.find((col) => col.name === name);
-      if (stored) {
-        state.column.filter((col) => col.id === order)[0].columnOrder =
-          stored.columnOrder;
-        state.column.filter((col) => col.name === name)[0].columnOrder = order;
-      }
+      state.column = action.payload;
     },
   },
 });

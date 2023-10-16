@@ -7,6 +7,7 @@ import { updateColumnOrder } from "../redux/columns/reducer";
 
 type ColumnPlaceholderProps = {
   order: number;
+  columnOrder?: number;
 };
 
 export function ColumnPlaceholder({
@@ -33,21 +34,23 @@ export function ColumnPlaceholder({
 
   const moveColumn = (name: string, order: number) => {
     const stored = columns.find((col) => col.name === name);
+    const anotherStored = columns.find((col) => col.id === order);
+    // console.log(stored);
+    // console.log(order);
 
-    if (stored) {
+    if (stored && anotherStored) {
       const updatedColumns = columns.map((col) => {
-        if (col.name === name) {
-          return { ...col, columnOrder: order };
-        } else if (col.id === order) {
+        if (col.id === order) {
           return { ...col, columnOrder: stored.columnOrder };
+        } else if (col.name === name) {
+          return { ...col, columnOrder: anotherStored.columnOrder };
         }
         return col;
       });
 
       localStorage.setItem("columns", JSON.stringify(updatedColumns));
+      dispatch(updateColumnOrder(updatedColumns));
     }
-
-    dispatch(updateColumnOrder({ name, order }));
   };
 
   const [, dropBoard] = useDrop({
@@ -57,6 +60,8 @@ export function ColumnPlaceholder({
 
   return (
     <div ref={dropBoard}>
+      {/* <span>{`id: ${order}`}</span>
+      {columnOrder !== null && <span>{`column order: ${columnOrder}`}</span>} */}
       {columns
         .filter((col) => col.id === order)
         .map((column) => {
