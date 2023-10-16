@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://vitejs.dev/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ttiimmothy/task-manager.git"
+  },
   "scripts": {
     "dev": "vite --port 5178",
     "build": "tsc && vite build",
