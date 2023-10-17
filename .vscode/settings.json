@@ -11,7 +11,8 @@
     "nokeyll",
     "ntvs",
     "reduxjs",
-    "tailwindcss"
+    "tailwindcss",
+    "ttiimmothy"
   ],
   "files.associations": {
     "*.css": "tailwindcss"
