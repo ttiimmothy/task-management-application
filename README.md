@@ -3,7 +3,7 @@
 [![cicd](https://github.com/ttiimmothy/task-manager/actions/workflows/cicd.yml/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/cicd.yml)
 [![pages-build-deployment](https://github.com/ttiimmothy/task-manager/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/pages/pages-build-deployment)
 
-A task manager using `Typescript`, `React` amd `Vite`. It uses `React Bootstrap` and `Tailwind CSS` for simplifying CSS usage. It uses `Formik` and `Yup` to make the create task form and uses `react-dnd` so the tasks can be dragged and dropped to different **status**. The manager uses `react-redux` and `@redux/toolkit` for state management.
+A task manager using `Typescript`, `React` amd `Vite`. It uses `React Bootstrap` and `Tailwind CSS` for simplifying CSS usage. It uses `Formik` and `Yup` to make the create task form and uses `react-dnd` so the tasks can be dragged and dropped to different **status**. The task manager uses `react-redux` and `@redux/toolkit` for state management.
 
 ## 🎯 Features
 
