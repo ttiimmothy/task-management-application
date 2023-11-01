@@ -40,7 +40,6 @@ export function Column({
         drag(ele);
       }}
       className={`column ${isDragging ? "opacity-50" : "opacity-100"}`}
-      // className="column"
     >
       <h2>{title}</h2>
       {cards.length === 0 && (

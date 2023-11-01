@@ -35,8 +35,6 @@ export function ColumnPlaceholder({
   const moveColumn = (name: string, order: number) => {
     const stored = columns.find((col) => col.name === name);
     const anotherStored = columns.find((col) => col.id === order);
-    // console.log(stored);
-    // console.log(order);
 
     if (stored && anotherStored) {
       const updatedColumns = columns.map((col) => {
@@ -60,8 +58,6 @@ export function ColumnPlaceholder({
 
   return (
     <div ref={dropBoard}>
-      {/* <span>{`id: ${order}`}</span>
-      {columnOrder !== null && <span>{`column order: ${columnOrder}`}</span>} */}
       {columns
         .filter((col) => col.id === order)
         .map((column) => {
