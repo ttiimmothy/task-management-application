@@ -14,7 +14,7 @@ export function TaskBoard(): JSX.Element {
     if (container) {
       container.scrollBy({
         left: -500,
-        behavior: "smooth", // Add smooth scrolling
+        behavior: "smooth",
       });
     }
   };
