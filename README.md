@@ -1,9 +1,9 @@
-# Task Manager
-[![ci](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/ci.yml)
-[![cicd](https://github.com/ttiimmothy/task-manager/actions/workflows/cicd.yml/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/cicd.yml)
-[![pages-build-deployment](https://github.com/ttiimmothy/task-manager/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ttiimmothy/task-manager/actions/workflows/pages/pages-build-deployment)
+# Task Management Application
+[![ci](https://github.com/ttiimmothy/task-management-application/actions/workflows/ci.yml/badge.svg)](https://github.com/ttiimmothy/task-management-application/actions/workflows/ci.yml)
+[![cd](https://github.com/ttiimmothy/task-management-application/actions/workflows/cd.yml/badge.svg)](https://github.com/ttiimmothy/task-management-application/actions/workflows/cd.yml)
+[![pages-build-deployment](https://github.com/ttiimmothy/task-management-application/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ttiimmothy/task-management-application/actions/workflows/pages/pages-build-deployment)
 
-A task manager using `Typescript`, `React` amd `Vite`. It uses `React Bootstrap` and `Tailwind CSS` for simplifying CSS usage. It uses `Formik` and `Yup` to make the create task form and uses `react-dnd` so the tasks can be dragged and dropped to different **status**. The task manager uses `react-redux` and `@redux/toolkit` for state management.
+A task management application uses `Typescript`, `React` amd `Vite`. It uses `React Bootstrap` and `Tailwind CSS` for simplifying CSS usage. It uses `Formik` and `Yup` to make the create task form and uses `react-dnd` so the tasks can be dragged and dropped to different **status**. The task management application uses `react-redux` and `@redux/toolkit` for state management.
 
 ## 🎯 Features
 
@@ -36,3 +36,7 @@ npm run dev
 ```HTML
 https://css.gg/css
 ```
+
+## License
+
+Task Manager Application is licensed under [GNU General Public License v3.0](LICENSE).
